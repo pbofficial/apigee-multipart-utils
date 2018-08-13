@@ -56,7 +56,7 @@ public class MultipartParser implements Execution {
 	private static String publicKeyStr;
 	private static String base64File;
 	private static String boundary;
-	private static String perfiosTransactionId;
+	private static String serverTransactionId;
 	private static String password;
 	private static String fileName;
 	private static String contentType;
@@ -110,20 +110,20 @@ public class MultipartParser implements Execution {
 				msgContext.setVariable("MESSAGE_3", "CONTENT TYPE SET");
 				
 				/*
-				 * Add parts to MIME message; add PerfiosTransactionId
+				 * Add parts to MIME message; add ServerTransactionId
 				 */
 
 				BodyPart messageBodyPart = BodyPartBuilder.create()
-						.setBody(BasicBodyFactory.INSTANCE.textBody(perfiosTransactionId)).build();
+						.setBody(BasicBodyFactory.INSTANCE.textBody(serverTransactionId)).build();
 				Header header = new HeaderImpl();
 				Map<String, String> hashMap = new HashMap();
-				hashMap.put(constants.CONTENT_DISPOSITION_NAME_KEY, constants.PERFIOS_TRANSACTION_ID_VARIABLE);
+				hashMap.put(constants.CONTENT_DISPOSITION_NAME_KEY, constants.SERVER_TRANSACTION_ID_VARIABLE);
 				header.setField(Fields.contentDisposition(constants.CONTENT_DISPOSITION_FORM_DATA_KEY, hashMap));
 				messageBodyPart.setHeader(header);
 
-				// Add Perfios TransactionId body-part to multipart
+				// Add Server TransactionId body-part to multipart
 				multipart.addBodyPart(messageBodyPart);
-				msgContext.setVariable("MESSAGE_4", "PERFIOS TRANSACTION ID SET");
+				msgContext.setVariable("MESSAGE_4", "SERVER TRANSACTION ID SET");
 
 				/*
 				 * Add parts to MIME message; add VendorId
@@ -415,7 +415,7 @@ public class MultipartParser implements Execution {
 		publicKeyStr = resolveVariable((String) properties.get(constants.PUBLIC_KEY_VARIABLE));
 		vendorId = resolveVariable((String) properties.get(constants.VENDOR_ID_VARIABLE));
 		base64File = resolveVariable((String) properties.get(constants.BASE64_FILE_VARIABLE));
-		perfiosTransactionId = resolveVariable((String) properties.get(constants.PERFIOS_TRANSACTION_ID_VARIABLE));
+		serverTransactionId = resolveVariable((String) properties.get(constants.SERVER_TRANSACTION_ID_VARIABLE));
 		password = resolveVariable((String) properties.get(constants.PASSWORD_VARIABLE));
 		fileName = resolveVariable((String) properties.get(constants.FILENAME_VARIABLE));
 		contentType = resolveVariable((String) properties.get(constants.CONTENT_TYPE_VARIABLE));
@@ -429,7 +429,7 @@ public class MultipartParser implements Execution {
 		else
 			msgContext.setVariable("BASE64_FILE_LENGTH", base64File.length());
 		
-		msgContext.setVariable("PERFIOS_TRANSACTION_ID", perfiosTransactionId);
+		msgContext.setVariable("SERVER_TRANSACTION_ID", serverTransactionId);
 		msgContext.setVariable("PASSWORD", password);
 		msgContext.setVariable("FILE_NAME", fileName);
 		msgContext.setVariable("CONTENT_TYPE", contentType);
