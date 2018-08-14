@@ -68,11 +68,9 @@ Once all text manipulations were finished, we created our own multipart data pay
 *Note* – In case you are not dealing with files in your multipart request and want to extract or perform simple text manipulations, then you can refer the following article and use JavaScript instead:
 [Apigee community](https://community.apigee.com/questions/36743/how-to-extract-multipartform-data-from-post-reques.html)
 
-```
-The Java code can be customized as per your requirement.
-If you need help in sending multipart/form-data requests from POSTMAN, refer this post -
-https://stackoverflow.com/questions/16015548/tool-for-sending-multipart-form-data-request
-```
+> The Java code can be customized as per your requirement.
+> If you need help in sending multipart/form-data requests from POSTMAN, refer this post -
+> [Stack Overflow](https://stackoverflow.com/questions/16015548/tool-for-sending-multipart-form-data-request)
 
 ------------------------------------------------------
 ## Detailed documentation on the description and usage
