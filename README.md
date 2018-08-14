@@ -1,11 +1,11 @@
 # apigee-multipart-utils
-About the Project
-------------------
+
+## About the Project  
 
 Apigee-multipart-utils is a Java utility which helps with creation and parsing of 'multipart/form-data' in Apigee.
 
-## Problem statement
-------------------------
+## Problem statement  
+
 In case of a POST request to an API, you must encode the data that forms the body of the request.
 
 HTML forms provide three methods of encoding –
@@ -22,8 +22,7 @@ Following are two scenarios which may arise with ‘multipart/form-data‘ reque
 
 Let’s discuss both these scenarios in detail below.
 
-## Scenario 1
-------------------------
+## Scenario 1  
 
 Let’s say, the client makes an application/json type POST request to Apigee containing Base64 encoded string of the actual pdf file along with other string fields. The Apigee target expects a multipart/form-data request with the raw binary pdf file and remaining text fields.
 This means that the json request from client needs to be transformed into ‘multipart/form-data’ which has one file input containing the raw pdf and other text inputs.
@@ -43,8 +42,7 @@ The next challenge is converting the Base64 file into a raw pdf. This is a bit t
 
 **Note**- If there is a requirement to create ‘multipart/form-data’ request without a raw file, you need not write a Java code. The following article can be helpful to fulfil that requirement using JavaScript, [Apigee community](https://community.apigee.com/questions/25630/need-to-send-a-request-to-a-service-with-contentty.html)
 
-## Scenario 2
-------------------------
+## Scenario 2  
 
 Let’s say, the client makes a ‘multipart/form-data’ request which contains a raw file along with other text components. We need to perform few transformations on the text components without hampering the binary raw file and forward it to the Apigee target.
 Again we're using [Mime4J](https://github.com/apache/james-mime4j) library to deal with ‘multipart/form-data’ 
@@ -63,10 +61,10 @@ Once all text manipulations are finished, we create our own multipart data paylo
 > The Java code can be customized as per your requirement.
 > If you need help in sending multipart/form-data requests from POSTMAN, refer this post - [Stack Overflow](https://stackoverflow.com/questions/16015548/tool-for-sending-multipart-form-data-request)
 
-## Detailed documentation on the description and usage
-------------------------------------------------------
+## Detailed documentation on the description and usage  
+
 Refer [README.docx](https://github.com/pbofficial/apigee-multipart-utils/blob/master/README.docx)
 
-Contributors
-------------------------
+## Contributors  
+
 The project is developed by [Rampradeep K](https://github.com/rampradeepk) and [Pritam Bhowmik](https://github.com/pbofficial) with major contributions from [Aashish Pathak](https://github.com/aashish-pathak) and [Ketaki Pandit](https://github.com/ketakipandit26). This project has been open-sourced by [Fresh Gravity](http://www.freshgravity.com/) under MIT license.
