@@ -15,7 +15,7 @@ HTML forms provide three methods of encoding –
   * multipart/form-data
   * text/plain
 
-You need to send data in ‘multipart/form-data’ request, if the data being submitted has file content *<input type=”file”>* with some other text components.
+You need to send data in ‘multipart/form-data’ request, if the data being submitted has file content `<input type=”file”>` with some other text components.
 In Apigee, there is a seamless support for parsing and creating POST requests with encoding form-urlencoded and text/plain (which can include json or xml content depending upon the Content-Type header). However, when it comes to creating or parsing ‘multipart/form-data’ requests, it is often the case that you end up writing custom code.
 
 Following are two scenarios which may arise with ‘multipart/form-data‘ requests –
