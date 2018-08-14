@@ -14,21 +14,21 @@ HTML forms provide three methods of encoding –
   * application/x-www-form-urlencoded (default)
   * multipart/form-data
   * text/plain
-  
-You need to send data in ‘multipart/form-data’ in case of data being submitted has file content (<input type=”file”>) with some other text components.
+
+You need to send data in ‘multipart/form-data’ request, if the data being submitted has file content *<input type=”file”>* with some other text components.
 In Apigee, there is a seamless support for parsing and creating POST requests with encoding form-urlencoded and text/plain (which can include json or xml content depending upon the Content-Type header). However, when it comes to creating or parsing ‘multipart/form-data’ requests, it is often the case that you end up writing custom code.
 
 Following are two scenarios which may arise with ‘multipart/form-data‘ requests –
   * Scenario 1: The back-end expects a ‘multipart/form-data’ request and you need to create such a request from Apigee
   * Scenario 2: Any client which sends a request to Apigee, can send a ‘multipart/form-data’ request and you need to parse the request in order to extract or manipulate individual text fields/files
-  
+
 Let’s discuss both these scenarios in detail below.
 
 ------------------------
 ## Scenario 1
 ------------------------
 
-Let’s say, the client makes an application/json type POST request to Apigee containing Base64 encoded string of the actual pdf file along with other string fields. The Apigee target expects a multipart/form-data request with the raw binary pdf file and remaining text fields. 
+Let’s say, the client makes an application/json type POST request to Apigee containing Base64 encoded string of the actual pdf file along with other string fields. The Apigee target expects a multipart/form-data request with the raw binary pdf file and remaining text fields.
 This means that the json request from client needs to be transformed into ‘multipart/form-data’ which has one file input containing the raw pdf and other text inputs.
 To handle this scenario, we've used Mime4J library for payload creation.
 [James Mime4J](https://github.com/apache/james-mime4j)
@@ -39,7 +39,7 @@ Please have a look at ‘MultipartParser.createMultipartRequest’ method –
 if (action.equals(constants.CREATE_METHOD_NAME))
 ```
 Every multipart request requires a boundary, which separates each component (file or text) within the body. You can create this boundary dynamically or keep a constant boundary which is what we did.
-Since, the request from client was application/json, we could extract each field separately from JSON in Apigee and send it to the Java code which stores these values in String variables. 
+Since, the request from client was application/json, we could extract each field separately from JSON in Apigee and send it to the Java code which stores these values in String variables.
 The next challenge was converting the Base64 file into a raw pdf. This was a bit tricky considering that a raw document is binary in nature, which implies once the conversion is completed, we can not deal with string.
 
 ```
@@ -71,7 +71,7 @@ Once all text manipulations were finished, we created our own multipart data pay
 
 ```
 The Java code can be customized as per your requirement.
-If you need help in sending multipart/form-data requests from POSTMAN, refer this post - 
+If you need help in sending multipart/form-data requests from POSTMAN, refer this post -
 https://stackoverflow.com/questions/16015548/tool-for-sending-multipart-form-data-request
 ```
 
