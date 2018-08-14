@@ -42,9 +42,8 @@ Every multipart request requires a boundary, which separates each component (fil
 Since, the request from client was application/json, we could extract each field separately from JSON in Apigee and send it to the Java code which stores these values in String variables.
 The next challenge was converting the Base64 file into a raw pdf. This was a bit tricky considering that a raw document is binary in nature, which implies once the conversion is completed, we can not deal with string.
 
-```
-The final output is a ‘multipart/form-data’ request, sent as a Java InputStream to Apigee which Apigee then sent to the target.
-```
+> The final output is a ‘multipart/form-data’ request, sent as a Java InputStream to Apigee,
+> which Apigee then sent to the target.
 
 *Note* – If there is a requirement to create ‘multipart/form-data’ request without a raw file, you need not write a Java code. The following article can be helpful to fulfil that requirement using JavaScript:
 [Apigee community](https://community.apigee.com/questions/25630/need-to-send-a-request-to-a-service-with-contentty.html)
