@@ -31,7 +31,7 @@ Let’s discuss both these scenarios in detail below.
 Let’s say, the client makes an application/json type POST request to Apigee containing Base64 encoded string of the actual pdf file along with other string fields. The Apigee target expects a multipart/form-data request with the raw binary pdf file and remaining text fields. 
 This means that the json request from client needs to be transformed into ‘multipart/form-data’ which has one file input containing the raw pdf and other text inputs.
 To handle this scenario, we've used Mime4J library for payload creation.
-[James Mime4J] (https://github.com/apache/james-mime4j)
+[James Mime4J](https://github.com/apache/james-mime4j)
 
 Please have a look at ‘MultipartParser.createMultipartRequest’ method –
 
@@ -55,7 +55,7 @@ The final output is a ‘multipart/form-data’ request, sent as a Java InputStr
 
 Let’s say, the client makes a ‘multipart/form-data’ request which contains a raw file along with other text components. We need to perform few transformations on the text components without hampering the binary raw file and forward it to the Apigee target.
 Again we're using Mime4J library to deal with ‘multipart/form-data’.
-[James Mime4J] (https://github.com/apache/james-mime4j)
+[James Mime4J](https://github.com/apache/james-mime4j)
 
 Please have a look at ‘MultipartParser.parseMultipartRequest’ method –
 
@@ -72,7 +72,7 @@ Once all text manipulations were finished, we created our own multipart data pay
 ```
 The Java code can be customized as per your requirement.
 If you need help in sending multipart/form-data requests from POSTMAN, refer this post - 
-[Stack Overflow](https://stackoverflow.com/questions/16015548/tool-for-sending-multipart-form-data-request)
+https://stackoverflow.com/questions/16015548/tool-for-sending-multipart-form-data-request
 ```
 
 ------------------------------------------------------
